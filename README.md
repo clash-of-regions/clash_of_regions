@@ -1,4 +1,4 @@
-# OpenFrontIO
+# Clash of Regions
 
 <p align="center">
   <picture>
@@ -11,184 +11,154 @@
 ![Prettier Check](https://github.com/openfrontio/OpenFrontIO/actions/workflows/prettier.yml/badge.svg)
 [![Crowdin](https://badges.crowdin.net/openfront-mls/localized.svg)](https://crowdin.com/project/openfront-mls)
 
-OpenFront is an online real-time strategy game focused on territorial control and alliance building. Players compete to expand their territory, build structures, and form strategic alliances in various maps based on real-world geography.
+**Clash of Regions** is a private fork of **OpenFrontIO (v23.12)**, reworked into a persistent MMO strategy game inspired by **Rival Regions**, **Call of War 3**, and **OpenFront.io**. This project retains OpenFront's fast-paced engine but expands it into a long-term, political-economic simulation with persistent states and player-driven gameplay.
 
-This is a fork/rewrite of WarFront.io. Credit to https://github.com/WarFrontIO.
+---
 
-# OpenFront - Licensing
+## 🌟 Features (from base engine)
 
-This project uses a dual-licensing approach:
+- Real-time strategic gameplay with WebSocket-driven interactions
+- Multiple real-world maps (e.g., Europe, Asia)
+- Full-stack TypeScript codebase
+- Modular client/server/core structure
+- Resource and territory management
+- Alliance and diplomacy systems
+- Cross-platform via browser
 
-- Code in the `server/` and `core/` directory is licensed under MIT
-- Client code (in the `client/` directory) is licensed under GPL v3
+---
 
-## 🌟 Features
+## 🎯 Project Vision (Clash of Regions)
 
-- **Real-time Strategy Gameplay**: Expand your territory and engage in strategic battles
-- **Alliance System**: Form alliances with other players for mutual defense
-- **Multiple Maps**: Play across various geographical regions including Europe, Asia, Africa, and more
-- **Resource Management**: Balance your expansion with defensive capabilities
-- **Cross-platform**: Play in any modern web browser
+Unlike OpenFront.io’s match-based system, this fork introduces:
+
+- 🌍 A **persistent world** with thousands of territories
+- 💰 **Economy**: production, trading, taxation
+- 🏛️ **Politics**: player-run governments, voting, parties
+- ⚔️ **Military**: armies, movement, battles, occupation
+- 🔁 **Realtime ticks** and save/load mechanics
+- 🖥️ **UI/UX overhaul** to support MMO-scale gameplay
+
+---
+
+## 📦 Development Backlog
+
+### 🧱 Core Infrastructure
+- [ ] Replace match reset system
+- [ ] Persistent DB and reconnect support
+- [ ] Long-session WebSocket stability
+
+### 🌍 World Map
+- [ ] Admin1/custom map loader
+- [ ] Region hover/select + ownership coloring
+
+### 💰 Economy
+- [ ] Resource generation
+- [ ] Territory-linked production
+- [ ] Warehouses, trading, taxation
+
+### ⚔️ Military
+- [ ] Unit training and movement
+- [ ] Battle system and region conquest
+
+### 🏛️ Politics
+- [ ] Elections, governance types
+- [ ] Party systems, player-run countries
+
+### 🖥️ UI / UX
+- [ ] HUD with dynamic region/player data
+- [ ] Construction, army, and diplomacy panels
+
+---
+
+## 🛠️ Development Tools
+
+- Format:
+  ```bash
+  npm run format
+  ```
+- Lint:
+  ```bash
+  npm run lint
+  ```
+- Fix lint issues:
+  ```bash
+  npm run lint:fix
+  ```
+
+---
 
 ## 📋 Prerequisites
 
-- [npm](https://www.npmjs.com/) (v10.9.2 or higher)
-- A modern web browser (Chrome, Firefox, Edge, etc.)
+- [Node.js / npm](https://www.npmjs.com/) (v10.9.2+)
+- Modern browser (Chrome, Firefox, Edge)
 
-## 🚀 Installation
+---
 
-1. **Clone the repository**
+## 🚀 Getting Started
 
-   ```bash
-   git clone https://github.com/openfrontio/OpenFrontIO.git
-   cd OpenFrontIO
-   ```
+### Clone the repository
 
-2. **Install dependencies**
+```bash
+git clone https://github.com/your-username/clash-of-regions.git
+cd clash-of-regions
+npm install
+```
 
-   ```bash
-   npm i
-   ```
-
-## 🎮 Running the Game
-
-### Development Mode
-
-Run both the client and server in development mode with live reloading:
+### Run in development mode
 
 ```bash
 npm run dev
 ```
 
-This will:
+This launches:
+- Webpack dev server for the client
+- Game server in dev mode
+- Browser auto-launch (localhost)
 
-- Start the webpack dev server for the client
-- Launch the game server with development settings
-- Open the game in your default browser
-
-### Client Only
-
-To run just the client with hot reloading:
+### Run client or server independently:
 
 ```bash
-npm run start:client
+npm run start:client      # client only
+npm run start:server-dev  # server only
 ```
 
-### Server Only
-
-To run just the server with development settings:
-
-```bash
-npm run start:server-dev
-```
-
-## 🛠️ Development Tools
-
-- **Format code**:
-
-  ```bash
-  npm run format
-  ```
-
-- **Lint code**:
-
-  ```bash
-  npm run lint
-  ```
-
-- **Lint and fix code**:
-  ```bash
-  npm run lint:fix
-  ```
+---
 
 ## 🏗️ Project Structure
 
-- `/src/client` - Frontend game client
-- `/src/core` - Shared game logic
-- `/src/server` - Backend game server
-- `/resources` - Static assets (images, maps, etc.)
+```
+src/
+├── client/   → Game client (browser)
+├── server/   → Node.js game server
+├── core/     → Shared game logic
+resources/    → Maps, images, and static assets
+```
+
+---
 
 ## 📝 License
 
-This project is licensed under the terms found in the [LICENSE](LICENSE) file.
+This project uses a dual-license inherited from OpenFrontIO:
 
-## 🤝 Contributing
+- MIT for `server/` and `core/`
+- GPLv3 for `client/`
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+See [LICENSE](LICENSE) for full details.
 
-1. Request to join the development [Discord](https://discord.gg/K9zernJB5z).
-1. Fork the repository
-1. Create your feature branch (`git checkout -b amazing-feature`)
-1. Commit your changes (`git commit -m 'Add some amazing feature'`)
-1. Push to the branch (`git push origin amazing-feature`)
-1. Open a Pull Request
+---
 
-## 🌐 Translation
+## 🙏 Credits
 
-Translators are welcome! Please feel free to help translate into your language.
-How to help?
+- Forked from [OpenFrontIO](https://github.com/openfrontio/OpenFrontIO)
+- Originally a rewrite of [WarFront.io](https://github.com/WarFrontIO)
+- Crowdin translation support: [Link](https://crowdin.com/project/openfront-mls)
 
-1. Request to join the translation [Discord](https://discord.gg/rUukAnz4Ww)
-1. Go to the project's Crowdin translation page: [https://crowdin.com/project/openfront-mls](https://crowdin.com/project/openfront-mls)
-1. Login if you already have an account/ Sign up if you don't have one
-1. Select the language you want to translate in/ If your language isn't on the list, click the "Request New Language" button and enter the language you want added there.
-1. Translate the strings
+---
 
-### Project Governance
+## 🔒 Note on Contributions
 
-- The project maintainer ([evan](https://github.com/evanpelle)) has final authority on all code changes and design decisions
-- All pull requests require maintainer approval before merging
-- The maintainer reserves the right to reject contributions that don't align with the project's vision or quality standards
+This project is currently maintained privately. Outside contributions are not accepted at this stage. Feature requests or ideas are welcome via issues only.
 
-### Contribution Path for New Contributors
-
-To ensure code quality and project stability, we use a progressive contribution system:
-
-1. **New Contributors**: Limited to UI improvements and small bug fixes only
-
-   - This helps you become familiar with the codebase
-   - UI changes are easier to review and less likely to break core functionality
-   - Small, focused PRs have a higher chance of being accepted
-
-2. **Established Contributors**: After several successful PRs and demonstrating understanding of the codebase, you may work on more complex features
-
-3. **Core Contributors**: Only those with extensive experience with the project may modify critical game systems
-
-### How to Contribute Successfully
-
-1. **Before Starting Work**:
-
-   - Open an issue describing what you want to contribute
-   - Wait for maintainer feedback before investing significant time
-   - Small improvements can proceed directly to PR stage
-
-2. **Code Quality Requirements**:
-
-   - All code must be well-commented and follow existing style patterns
-   - New features should not break existing functionality
-   - Code should be thoroughly tested before submission
-   - All code changes in src/core _MUST_ be tested.
-
-3. **Pull Request Process**:
-
-   - Keep PRs focused on a single feature or bug fix
-   - Include screenshots for UI changes
-   - Describe what testing you've performed
-   - Be responsive to feedback and requested changes
-
-4. **Testing Requirements**:
-   - Verify your changes work as expected
-   - Test on multiple systems/browsers if applicable
-   - Document your testing process in the PR
-
-### Communication
-
-- Be respectful and constructive in all project interactions
-- Questions are welcome, but please search existing issues first
-- For major changes, discuss in an issue before starting work
-
-### Final Notes
-
-Remember that maintaining this project requires significant effort. The maintainer appreciates your contributions but must prioritize long-term project health and stability. Not all contributions will be accepted, and that's okay.
-
-Thank you for helping make OpenFront better!
+Development Team:
+- Lead Developer
+- Systems Architect
