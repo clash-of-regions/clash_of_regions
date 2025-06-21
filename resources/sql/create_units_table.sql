@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS units (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  region_id INT NOT NULL,
+  type VARCHAR(50) NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (region_id) REFERENCES regions(id)
+);
