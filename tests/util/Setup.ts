@@ -1,5 +1,9 @@
 import fs from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
+
+// __dirname isn't defined in ESM, recreate it for path helpers
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import {
   Difficulty,
   Game,
