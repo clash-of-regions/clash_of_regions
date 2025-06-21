@@ -3,7 +3,8 @@ import { getRedis } from "../persistence/RedisClient";
 import { Logger } from "winston";
 
 export class WorldServer {
-  private tickInterval: NodeJS.Timer | null = null;
+  // Use ReturnType<typeof setInterval> for compatibility across Node versions
+  private tickInterval: ReturnType<typeof setInterval> | null = null;
 
   constructor(private log: Logger) {}
 
