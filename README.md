@@ -134,6 +134,21 @@ src/
 resources/    → Maps, images, and static assets
 ```
 
+### Persistent World Setup
+
+Set `PERSISTENT_WORLD=1` to enable the new persistent server mode. Configure
+MySQL and Redis connections through the following environment variables:
+
+```
+MYSQL_HOST
+MYSQL_USER
+MYSQL_PASSWORD
+MYSQL_DB
+REDIS_URL
+```
+
+Run the SQL scripts under `resources/sql/` to initialize the database schema.
+
 ---
 
 ## 📝 License
