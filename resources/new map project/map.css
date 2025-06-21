@@ -1,0 +1,71 @@
+/* --- layout ------------------------------------------------------- */
+html,body{
+  height:100%;
+  margin:0;
+  font:14px/18px sans-serif;
+}
+
+/* --- base map container ------------------------------------------ */
+#map{
+  height:100%;
+  background:#ddeeff;                   /* water colour            */
+  will-change:transform;
+  transform:translateZ(0);              /* tiny GPU hint           */
+  position:relative;
+  overflow:hidden;
+}
+
+/* --- fog-of-war / vignette to mask tile seams -------------------- */
+#map::after{
+  content:'';
+  position:absolute; inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at center,
+      transparent 60%,
+      rgba(221,238,255,0.85) 90%);
+}
+
+/* --- hover info label -------------------------------------------- */
+#hoverLabel{
+  position:absolute;
+  z-index:9999;
+  pointer-events:none;
+  background:#fff;
+  padding:2px 6px;
+  border:1px solid #888;
+  border-radius:3px;
+  font-size:13px;
+  white-space:nowrap;
+  box-shadow:0 0 4px #0003;
+  transform:translate(10px,10px);
+  opacity:0;
+}
+/* --- footer controls --------------------------------------------- */
+#footerControls {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffffdd;
+  padding: 6px 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0002;
+  z-index: 1000;
+}
+
+#footerControls button {
+  margin: 0 6px;
+  padding: 6px 12px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#footerControls button.active {
+  background: #0088ff;
+  color: white;
+  border-color: #0070cc;
+}
