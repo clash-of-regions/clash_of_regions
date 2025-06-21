@@ -149,6 +149,19 @@ REDIS_URL
 
 Run the SQL scripts under `resources/sql/` to initialize the database schema.
 
+### Province Mini-Map Generation
+
+The `new map project` folder contains a GeoJSON dataset of real-world provinces.
+Run the build script to pre-generate mini-map textures for each province:
+
+```bash
+npm run build-province-maps [datasetPath] [outputDir]
+```
+
+By default it reads `new map project/provinces.geojson` and writes PNG files to
+`resources/province_maps/`. These assets are served by the game server and can
+be loaded at runtime using `loadProvinceMiniMap(name)` from the client.
+
 ---
 
 ## 📝 License

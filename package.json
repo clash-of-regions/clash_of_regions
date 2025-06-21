@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build-map": "node --loader ts-node/esm --experimental-specifier-resolution=node src/scripts/generateTerrainMaps.ts",
+    "build-province-maps": "node --loader ts-node/esm --experimental-specifier-resolution=node src/scripts/generateProvinceMiniMaps.ts",
     "build-dev": "webpack --config webpack.config.js --mode development",
     "build-prod": "webpack --config webpack.config.js --mode production",
     "start:client": "webpack serve --open --node-env development",
