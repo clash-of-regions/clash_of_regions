@@ -62,6 +62,7 @@
     "ts-jest": "^29.2.4",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "copy-webpack-plugin": "^11.0.0"
   }
 }
