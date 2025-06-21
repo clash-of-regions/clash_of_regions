@@ -162,6 +162,8 @@ By default it reads `new map project/provinces.geojson` and writes PNG files to
 `resources/province_maps/`. These assets are served by the game server and can
 be loaded at runtime using `loadProvinceMiniMap(name)` from the client.
 
+
+
 ---
 
 ## 📝 License
