@@ -134,6 +134,34 @@ src/
 resources/    → Maps, images, and static assets
 ```
 
+### Persistent World Setup
+
+Set `PERSISTENT_WORLD=1` to enable the new persistent server mode. Configure
+MySQL and Redis connections through the following environment variables:
+
+```
+MYSQL_HOST
+MYSQL_USER
+MYSQL_PASSWORD
+MYSQL_DB
+REDIS_URL
+```
+
+Run the SQL scripts under `resources/sql/` to initialize the database schema.
+
+### Province Mini-Map Generation
+
+The `new map project` folder contains a GeoJSON dataset of real-world provinces.
+Run the build script to pre-generate mini-map textures for each province:
+
+```bash
+npm run build-province-maps [datasetPath] [outputDir]
+```
+
+By default it reads `new map project/provinces.geojson` and writes PNG files to
+`resources/province_maps/`. These assets are served by the game server and can
+be loaded at runtime using `loadProvinceMiniMap(name)` from the client.
+
 ---
 
 ## 📝 License

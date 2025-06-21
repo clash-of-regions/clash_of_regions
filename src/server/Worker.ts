@@ -18,10 +18,13 @@ import { CreateGameInputSchema, GameInputSchema } from "../core/WorkerSchemas";
 import { archive, readGameRecord } from "./Archive";
 import { Client } from "./Client";
 import { GameManager } from "./GameManager";
+import { initMySQL } from "./persistence/MySQLClient";
+import { initRedis, getRedis } from "./persistence/RedisClient";
 import { gatekeeper, LimiterType } from "./Gatekeeper";
 import { getUserMe, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
 import { initWorkerMetrics } from "./WorkerMetrics";
+import { WorldServer } from "./world/WorldServer";
 
 const config = getServerConfigFromServer();
 
@@ -39,7 +42,22 @@ export function startWorker() {
   const server = http.createServer(app);
   const wss = new WebSocketServer({ server });
 
+  const persistentWorld = process.env.PERSISTENT_WORLD === "1";
+
   const gm = new GameManager(config, log);
+  let world: WorldServer | null = null;
+
+  if (persistentWorld) {
+    initMySQL({
+      host: process.env.MYSQL_HOST || "localhost",
+      user: process.env.MYSQL_USER || "root",
+      password: process.env.MYSQL_PASSWORD || "",
+      database: process.env.MYSQL_DB || "clash",
+    });
+    initRedis(process.env.REDIS_URL || "redis://localhost:6379");
+    world = new WorldServer(log);
+    world.start().catch((e) => log.error(`world start error ${e}`));
+  }
 
   if (config.env() === GameEnv.Prod && config.otelEnabled()) {
     initWorkerMetrics(gm);
@@ -339,6 +357,19 @@ export function startWorker() {
               ws,
               clientMsg.flag,
             );
+
+            if (persistentWorld) {
+              try {
+                await getRedis().set(
+                  `session:${client.clientID}`,
+                  client.persistentID,
+                  "EX",
+                  60,
+                );
+              } catch (err) {
+                log.warn(`redis session error ${err}`);
+              }
+            }
 
             const wasFound = gm.addClient(
               client,

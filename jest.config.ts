@@ -15,6 +15,6 @@ export default {
       },
     ],
   },
-  transformIgnorePatterns: ["node_modules/(?!(node:)/)"],
+  transformIgnorePatterns: ["node_modules/(?!(nanoid|twemoji)/)"],
   preset: "ts-jest/presets/default-esm",
 };
